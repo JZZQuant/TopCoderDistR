@@ -1,5 +1,8 @@
-#install.packages(c('ggplot2','wordcloud','tm'))
+#Run the below two commands in linux shell to extract data
+#sudo apt-get install p7zip-full
+#7z x /home/vertica/Documents/git/TopCoderDistR/Data.7z
 
+#install.packages(c('ggplot2','wordcloud','tm'))
 articles<-list.files(pattern="\\.txt",recursive=T)
 title<-NULL
 date<-NULL

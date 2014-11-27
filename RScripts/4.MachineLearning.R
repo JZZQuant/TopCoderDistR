@@ -23,4 +23,4 @@ find.duplicates <-function(test)
 }
 
 # find duplicates
-results<-apply(c(372,143,87,790,368,241),find.duplicates)
+results<-lapply(c(372,143,87,790,368,241),find.duplicates)
