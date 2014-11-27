@@ -1,4 +1,5 @@
-#setwd("Data")
+#install.packages(c('ggplot2','wordcloud','tm'))
+
 articles<-list.files(pattern="\\.txt",recursive=T)
 title<-NULL
 date<-NULL
@@ -29,7 +30,7 @@ Structured<- function(article)
   invest<-c(invest,gsub(".*Investigator:",'',lines[grepl('Investigator',lines)]))
   c(title[[1]],date[[1]],expire[[1]],amount[[1]],field[[1]],invest[[1]],abstract[[1]])
 }
-chunk<-lapply(articles[1:5000],function(x) Structured(x))
+chunk<-lapply(articles[1:1000],function(x) Structured(x))
 df<-data.frame(matrix(unlist(chunk,recursive=F),ncol=7,byrow=T), stringsAsFactors =F)
 colnames(df)<-c("title","date","expire","amount","field","invest","abstract")
 df<-transform(df,date=as.Date(date," %B %d, %Y"),expire=as.Date(date," %B %d, %Y"),amount=as.numeric(amount),field=as.factor(field),invest=as.factor(invest))
@@ -57,7 +58,7 @@ clean <- tm_map(clean, PlainTextDocument)
 
 #wordcloud of  most repeated words and tags
 library(wordcloud)
-wordcloud(clean, min.freq = 40, random.order = FALSE,colors=brewer.pal(8, "Dark2"))
+# wordcloud(clean, min.freq = 40, random.order = FALSE,colors=brewer.pal(8, "Dark2"))
 
 #create a document term matrix and remove too obvious and unwanted words
 dtm<-DocumentTermMatrix(clean)
@@ -85,8 +86,8 @@ find.duplicates <-function(test)
   #find the most similar looking blogs
   nearestblogs<-unique(match(head(sort(rowSums(linear.span)),100),rowSums(linear.span)))
   #get the top two neighbours
-  sapply(allblogs[nearestblogs], function(x){unlist(x[['URL']])})[1:2]
+  df[nearestblogs,]$title[1:2]
 }
 
 # find duplicates
-lapply(c(143,56,37,745),find.duplicates)
+lapply(c(372,143,87,790,368,241),find.duplicates)
