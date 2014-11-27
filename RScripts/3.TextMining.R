@@ -1,5 +1,3 @@
-
-
 library(tm)
 blogcorp<-Corpus(VectorSource(df$abstract))
 clean<-tm_map(blogcorp,tolower)

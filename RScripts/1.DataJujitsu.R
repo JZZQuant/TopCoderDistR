@@ -10,6 +10,7 @@ expire<-NULL
 amount<-NULL
 field<-NULL
 invest<-NULL
+
 Structured<- function(article)
 {         
   lines<-readLines(article)
@@ -33,6 +34,7 @@ Structured<- function(article)
   invest<-c(invest,gsub(".*Investigator:",'',lines[grepl('Investigator',lines)]))
   c(title[[1]],date[[1]],expire[[1]],amount[[1]],field[[1]],invest[[1]],abstract[[1]])
 }
+
 chunk<-lapply(articles[1:1000],function(x) Structured(x))
 df<-data.frame(matrix(unlist(chunk,recursive=F),ncol=7,byrow=T), stringsAsFactors =F)
 colnames(df)<-c("title","date","expire","amount","field","invest","abstract")
