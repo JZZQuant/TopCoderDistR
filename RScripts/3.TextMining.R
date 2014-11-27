@@ -11,7 +11,7 @@ clean <- tm_map(clean, PlainTextDocument)
 
 #wordcloud of  most repeated words and tags
 library(wordcloud)
-wordcloud(clean, min.freq = 40, random.order = FALSE,colors=brewer.pal(8, "Dark2"))
+wordcloud(clean, min.freq = 100, random.order = FALSE,colors=brewer.pal(8, "Dark2"))
 
 #create a document term matrix and remove too obvious and unwanted words
 dtm<-DocumentTermMatrix(clean)
