@@ -1,0 +1,5 @@
+Code repository: https://github.com/Sasikanth3/TopCoderDistR.git   (also contains data)
+Data : https://archive.ics.uci.edu/ml/machine-learning-databases/nsfabs-mld/Part3.zip
+Sandbox Hyper-V torrent: https://drive.google.com/file/d/0B-RYaz_F3Lr6OUZSM2NBSWRWd2s/view?usp=sharing
+Blog : http://darkcornerlaboratory.wordpress.com/plagiarism-detection-using-unsupervised-machine-learning/
+video : 

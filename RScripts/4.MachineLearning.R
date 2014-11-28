@@ -9,9 +9,9 @@ stochaitic.matrix<-t(t(boolean.matrix)/colSums(boolean.matrix))
 # unsupervised learning algorithm to find similar duplicates
 find.duplicates <-function(test)
 {
-  #diiferential
+  #diiferential , if the difference is 0 then the word has repeated in both the documents
   linear.difference<-t(t(boolean.matrix)-boolean.matrix[test,])
-  #normalize
+  #normalize, we take a modulus to convert all -1 s into 1s
   normal.counts <- function(x) {x <- ifelse(x == 0, 0, 1); return(x)}
   normal.matrix <- apply(linear.difference, MARGIN = 2, normal.counts)
   #scalling
